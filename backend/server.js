@@ -27,7 +27,9 @@ app.use(
 router.get('/', (request, response) => {
     response.sendFile(path.join(__dirname, '../frontend/html/index.html'));
 });
-
+router.get('/hozzaadas.html', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/hozzaadas.html'));
+});
 //!API endpoints
 app.use('/', router);
 const endpoints = require('./api/api.js');

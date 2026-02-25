@@ -40,5 +40,23 @@ router.get('/testsql', async (request, response) => {
         });
     }
 });
+router.post('/konyv', upload.none(), async (request, response) => {
+    try {
+        const form = request.body;
+        
+        console.log(form.cim, form.szerzo, form.kiado, form.kiadasev, form.oldalszam, form.konyvmufaja, form.konyvarasarlasiar);
+     
+        await database.insertKonyv(form.cim, form.szerzo, form.kiado, form.kiadasev, form.oldalszam, form.konyvmufaja, form.konyvarasarlasiar);
+        response.status(200).json({
+            message: 'Könyv sikeresen feltöltve.'
+        });
+    } catch (error) {
+        response.status(500).json({
+            message: error.message
+
+        });
+    }
+});
+//kill all niggers
 
 module.exports = router;

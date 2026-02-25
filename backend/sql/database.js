@@ -18,8 +18,6 @@ async function selectall() {
 }
 
 async function insertKonyv(cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja, konyvarasarlasiar) {
-    // First, log the values to debug
-    console.log('Inserting:', { cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja, konyvarasarlasiar });
     
     const query = 'INSERT INTO konyv (cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja, konyvarasarlasiar) VALUES (?, ?, ?, ?, ?, ?, ?);';
     const [result] = await pool.execute(query, [cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja, konyvarasarlasiar]);

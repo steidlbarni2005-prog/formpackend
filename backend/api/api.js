@@ -43,9 +43,6 @@ router.get('/testsql', async (request, response) => {
 router.post('/konyv', upload.none(), async (request, response) => {
     try {
         const form = request.body;
-        
-        console.log(form.cim, form.szerzo, form.kiado, form.kiadasev, form.oldalszam, form.konyvmufaja, form.konyvarasarlasiar);
-     
         await database.insertKonyv(form.cim, form.szerzo, form.kiado, form.kiadasev, form.oldalszam, form.konyvmufaja, form.konyvarasarlasiar);
         response.status(200).json({
             message: 'Könyv sikeresen feltöltve.'
@@ -57,6 +54,21 @@ router.post('/konyv', upload.none(), async (request, response) => {
         });
     }
 });
-//kill all niggers
+
+router.post('/autofeltoltes', upload.none(), async (request, response) => {
+    try {
+
+        const form = request.body;
+        await database.insertAuto(form.marka, form.gyartasiev, form.alvazszam, form.loero, form.kilometerallasa, form.uzemanyagtipus, form.fogyasztas, form.uzemanyagszint);
+        response.status(200).json({
+            message: 'Autó sikeresen feltöltve.'
+        });
+    } catch (error) {
+        response.status(500).json({
+            message: error.message
+
+        });
+    }
+});
 
 module.exports = router;

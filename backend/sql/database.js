@@ -23,8 +23,15 @@ async function insertKonyv(cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja
     const [result] = await pool.execute(query, [cim, szerzo, kiado, kiadaseve, oldalszam, konyvmufaja, konyvarasarlasiar]);
     return result;
 }
+async function insertAuto(marka, gyartasiev, alvazszam, loero, kilometerallasa, uzemanyagtipus, fogyasztas, uzemanyagszint) {
+    
+    const query = 'INSERT INTO auto (marka, gyartasiev, alvazszam, loero, kilometerallasa, uzemanyagtipus, fogyasztas, uzemanyagszint) VALUES (?, ?, ?, ?, ?, ?, ?, ?);';
+    const [result] = await pool.execute(query, [marka, gyartasiev, alvazszam, loero, kilometerallasa, uzemanyagtipus, fogyasztas, uzemanyagszint]);
+    return result;
+}
 //!Export
 module.exports = {
     selectall,
-    insertKonyv
+    insertKonyv,
+    insertAuto
 };

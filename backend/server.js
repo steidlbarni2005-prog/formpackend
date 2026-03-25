@@ -30,6 +30,15 @@ router.get('/', (request, response) => {
 router.get('/hozzaadas.html', (request, response) => {
     response.sendFile(path.join(__dirname, '../frontend/html/hozzaadas.html'));
 });
+router.get('/hozzaadasauto.html', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/hozzaadasauto.html'));
+});
+router.get('/konyv.html', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/konyv.html'));
+});
+router.get('/autok.html', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/autok.html'));
+});
 //!API endpoints
 app.use('/', router);
 const endpoints = require('./api/api.js');

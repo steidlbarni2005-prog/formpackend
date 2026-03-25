@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'root',
     password: '',
-    database: 'konyvek',
+    database: 'autoc',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -29,9 +29,15 @@ async function insertAuto(marka, gyartasiev, alvazszam, loero, kilometerallasa, 
     const [result] = await pool.execute(query, [marka, gyartasiev, alvazszam, loero, kilometerallasa, uzemanyagtipus, fogyasztas, uzemanyagszint]);
     return result;
 }
+async function selectAllAutos() {
+    const query = 'SELECT * FROM auto;';
+    const [rows] = await pool.execute(query);
+    return rows;
+}
 //!Export
 module.exports = {
     selectall,
     insertKonyv,
-    insertAuto
+    insertAuto,
+    selectAllAutos
 };
